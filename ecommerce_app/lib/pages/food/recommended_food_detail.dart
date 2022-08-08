@@ -2,7 +2,9 @@ import 'package:ecommerce_app/utils/colors.dart';
 import 'package:ecommerce_app/utils/dimensions.dart';
 import 'package:ecommerce_app/widgets/expandable_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../../routes/route_helper.dart';
 import '../../widgets/app_icon.dart';
 import '../../widgets/big_text.dart';
 
@@ -17,12 +19,18 @@ class RecommendedFoodDetail extends StatelessWidget {
         slivers: [
           // screen moves to drag direction when scrolling
           SliverAppBar(
+            automaticallyImplyLeading: false,
             toolbarHeight: Dimensions.getHeight(70),
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                AppIcon(icon: Icons.clear),
-                AppIcon(icon: Icons.shopping_cart_outlined),
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Get.toNamed(RouteHelper.getInitial);
+                  },
+                  child: const AppIcon(icon: Icons.clear),
+                ),
+                const AppIcon(icon: Icons.shopping_cart_outlined),
               ],
             ),
             bottom: PreferredSize(

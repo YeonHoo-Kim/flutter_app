@@ -1,17 +1,24 @@
+import 'package:ecommerce_app/controllers/popular_product_controller.dart';
+import 'package:ecommerce_app/pages/home/main_food_page.dart';
+import 'package:ecommerce_app/routes/route_helper.dart';
 import 'package:ecommerce_app/utils/colors.dart';
 import 'package:ecommerce_app/utils/dimensions.dart';
 import 'package:ecommerce_app/widgets/app_column.dart';
 import 'package:ecommerce_app/widgets/big_text.dart';
 import 'package:ecommerce_app/widgets/expandable_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../widgets/app_icon.dart';
 
 class PopularFoodDetail extends StatelessWidget {
-  const PopularFoodDetail({Key? key}) : super(key: key);
+  int pageId;
+  PopularFoodDetail({Key? key, required this.pageId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var product =
+        Get.find<PopularProductController>().popularProductList[pageId];
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
@@ -40,9 +47,14 @@ class PopularFoodDetail extends StatelessWidget {
             right: Dimensions.getWidth(20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                AppIcon(icon: Icons.arrow_back_ios),
-                AppIcon(icon: Icons.shopping_cart_checkout_outlined),
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Get.toNamed(RouteHelper.getInitial);
+                  },
+                  child: const AppIcon(icon: Icons.arrow_back_ios),
+                ),
+                const AppIcon(icon: Icons.shopping_cart_checkout_outlined),
               ],
             ),
           ),
