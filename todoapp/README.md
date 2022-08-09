@@ -1,6 +1,7 @@
 # todoapp
 
-A new Flutter project.
+This is a tutorial flutter todoapp of TVAC Studio
+[youtube link](https://www.youtube.com/playlist?list=PLGCjwl1RrtcSlUrd_-Z-924b3ahWISiDh)
 
 ## Getting Started
 
